@@ -1,0 +1,55 @@
+{
+  "name": "inventory-management-system",
+  "private": true,
+  "version": "1.0.0",
+  "description": "一个功能完整的库存管理系统，支持商品管理、库存跟踪、数据统计等功能",
+  "author": "Your Name",
+  "main": "electron.js",
+  "homepage": "https://yourusername.github.io/inventory-management-system/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/inventory-management-system.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
+    "predeploy": "npm run build",
+    "electron": "electron .",
+    "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:pack": "npm run build && electron-builder",
+    "electron:dist": "npm run build && electron-builder --publish=never"
+  },
+  "build": {
+    "appId": "com.example.inventory-management",
+    "productName": "库存管理系统",
+    "directories": {
+      "output": "electron-dist"
+    },
+    "files": [
+      "dist/**/*",
+      "electron.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    }
+  },
+  "devDependencies": {
+    "vite": "^5.2.0",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "concurrently": "^7.6.0",
+    "wait-on": "^7.0.1"
+  }
+}

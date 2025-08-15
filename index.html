@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>本地网页应用</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <button class="back-btn hidden" id="back-btn">← 返回</button>
+            <h1 id="main-title">项目列表</h1>
+        </header>
+        <main>
+            <div id="project-list-page">
+                <ul id="project-list"></ul>
+                <button id="new-project-btn">新建项目</button>
+            </div>
+
+            <div id="project-page" class="hidden">
+                <h2 id="project-name"></h2>
+                <div id="project-summary"></div>
+                <div id="add-by-date-container">
+                    <input type="date" id="add-by-date-input">
+                    <button id="add-by-date-btn">按日期添加记录</button>
+                </div>
+                <ul id="date-list"></ul>
+            </div>
+
+            <div id="daily-details-page" class="hidden">
+                <h2 id="date-header"></h2>
+                <div id="daily-summary"></div>
+                <div class="records-container">
+                    <div class="records-column">
+                        <h4>入库记录</h4>
+                        <ul id="entry-records-list"></ul>
+                    </div>
+                    <div class="records-column">
+                        <h4>出库记录</h4>
+                        <ul id="outbound-records-list"></ul>
+                    </div>
+                </div>
+                <div class="expense-section">
+                    <h4>费用记录</h4>
+                    <ul id="expense-records-list"></ul>
+                </div>
+                <div class="fab-buttons">
+                    <button id="add-entry-btn">添加入库</button>
+                    <button id="add-expense-btn">添加费用</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals for adding/editing data -->
+    <div id="add-entry-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>添加入库记录</h3>
+            <form id="add-entry-form">
+                <input type="hidden" id="entry-id">
+                <input type="text" id="item-name" placeholder="物品名称" required>
+                <input type="number" id="item-count" placeholder="入库件数" step="any" required>
+                <input type="number" id="item-weight" placeholder="单件重量（斤）" step="any" required>
+                <input type="number" id="item-price" placeholder="单价（元/斤）" step="any" required>
+                <input type="text" id="item-name-person" placeholder="姓名">
+                <input type="text" id="item-id-card" placeholder="身份证号">
+                <input type="text" id="item-phone" placeholder="电话号码">
+                <textarea id="item-remarks" placeholder="备注"></textarea>
+                <button type="submit">保存</button>
+                <button type="button" class="cancel-btn">取消</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="add-expense-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>添加费用记录</h3>
+            <form id="add-expense-form">
+                <input type="hidden" id="expense-id">
+                
+                <div class="expense-category-section">
+                    <label>人工费</label>
+                    <input type="number" id="labor-cost" placeholder="人工费金额" step="0.01">
+                    <textarea id="labor-remarks" placeholder="人工费备注"></textarea>
+                </div>
+                
+                <div class="expense-category-section">
+                    <label>代办费</label>
+                    <input type="number" id="agency-cost" placeholder="代办费金额" step="0.01">
+                    <textarea id="agency-remarks" placeholder="代办费备注"></textarea>
+                </div>
+                
+                <div class="expense-category-section">
+                    <label>装车费</label>
+                    <input type="number" id="loading-cost" placeholder="装车费金额" step="0.01">
+                    <textarea id="loading-remarks" placeholder="装车费备注"></textarea>
+                </div>
+                
+                <div class="expense-category-section">
+                    <label>吃饭费用</label>
+                    <input type="number" id="meal-cost" placeholder="吃饭费用金额" step="0.01">
+                    <textarea id="meal-remarks" placeholder="吃饭费用备注"></textarea>
+                </div>
+                
+                <div class="expense-category-section">
+                    <label>加油费用</label>
+                    <input type="number" id="fuel-cost" placeholder="加油费用金额" step="0.01">
+                    <textarea id="fuel-remarks" placeholder="加油费用备注"></textarea>
+                </div>
+                
+                <div class="expense-category-section">
+                    <label>车费</label>
+                    <input type="number" id="transport-cost" placeholder="车费金额" step="0.01">
+                    <textarea id="transport-remarks" placeholder="车费备注"></textarea>
+                </div>
+                
+                <button type="submit">保存</button>
+                <button type="button" class="cancel-btn">取消</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Outbound Modal -->
+    <div id="add-outbound-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>添加出库记录</h3>
+            <form id="add-outbound-form">
+                <input type="hidden" id="outbound-id">
+                <input type="date" id="outbound-date">
+                <input type="text" id="outbound-item-name" placeholder="物品名称">
+                <input type="number" id="outbound-count" placeholder="出库件数" step="any" required>
+                <input type="number" id="outbound-weight" placeholder="单件重量（斤）" step="any">
+                <input type="number" id="outbound-price" placeholder="单价（元/斤）" step="any">
+                <input type="text" id="outbound-buyer" placeholder="买方姓名">
+                <input type="text" id="outbound-buyer-phone" placeholder="买方电话">
+                <textarea id="outbound-remarks" placeholder="备注"></textarea>
+                <button type="submit">保存</button>
+                <button type="button" class="cancel-btn">取消</button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
