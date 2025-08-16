@@ -5,10 +5,10 @@
   "description": "一个功能完整的库存管理系统，支持商品管理、库存跟踪、数据统计等功能",
   "author": "Your Name",
   "main": "electron.js",
-  "homepage": "https://yourusername.github.io/inventory-management-system/",
+  "homepage": "https://buvgh.github.io/inventory-management-system/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/inventory-management-system.git"
+    "url": "https://github.com/buvgh/inventory-management-system.git"
   },
   "scripts": {
     "dev": "vite",
